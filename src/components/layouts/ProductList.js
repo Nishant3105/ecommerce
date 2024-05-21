@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import CartContext from '../../context/CartContext'
+// import {v4 as uuidv4} from 'uuid'
 
 
 const productsArr = [
@@ -31,6 +32,7 @@ const productsArr = [
 ];
 
 const ProductList = () => {
+    const cartCtx=useContext(CartContext)
     const products = productsArr.map((product, index) => {
         return (
             <Col xs={4}>
@@ -41,7 +43,7 @@ const ProductList = () => {
                             <Card.Img variant="top" src={product.imageUrl} />
                             <Card.Text>
                                 ${product.price}
-                            <Button variant="primary" onClick={cartCtx.addToCart(product)}>Add To Cart</Button>
+                            <Button variant="primary" onClick={()=>cartCtx.addToCart({...product,id:index})}>Add To Cart</Button>
                             </Card.Text>
                         </Card.Body>
                     </Card>

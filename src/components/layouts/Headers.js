@@ -1,10 +1,13 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import CartContext from '../../context/CartContext';
 
 const Headers = (props) => {
+    const cartCtx=useContext(CartContext)
+    const totalCartItem=cartCtx.products.length
     return (
         <>
             <Navbar bg="dark" fixed="top" data-bs-theme="dark">
@@ -17,7 +20,7 @@ const Headers = (props) => {
                     </Nav>
                     <Container>
                     <Button onClick={props.onClick}>cart
-                    <Container varient="light">0</Container>
+                    <Container varient="light">{totalCartItem}</Container>
                     </Button>
                     </Container>
                 </Container>

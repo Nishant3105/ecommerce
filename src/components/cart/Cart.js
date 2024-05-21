@@ -29,12 +29,10 @@ const cartElements = [
     
 const Cart = (props) => {
   const cartCtx=useContext(CartContext)
-  const removeCartHandler=(id) => {
-    cartCtx.removeFromCart(id)
-    const parentElement=document.getElementById('cart-items')
-    parentElement.removeChild(id)
-  }
-  const CartItems=cartElements.map((item,index)=> (
+  // const removeCartHandler=(id) => {
+  //   cartCtx.removeFromCart(id)
+  // }
+  const CartItems=(cartCtx.products.map((item,index)=> (
         <li id={index} key={index}>
             <span>
                 Item: {item.title}
@@ -49,8 +47,8 @@ const Cart = (props) => {
                 Total: {Number(item.price*item.quantity)}
             </span>
             <Button>Purchase</Button>
-            <Button onClick={removeCartHandler(index)}>Remove</Button>
-        </li>
+            <Button onClick={(index)=>cartCtx.removeFromCart(item.id)}>Remove</Button>
+        </li>)
 
   ))
 

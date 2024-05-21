@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 
-const Headers = () => {
+const Headers = (props) => {
     return (
         <>
             <Navbar bg="dark" fixed="top" data-bs-theme="dark">
@@ -16,7 +16,7 @@ const Headers = () => {
                         <Nav.Link >About</Nav.Link>
                     </Nav>
                     <Container>
-                    <Button>cart
+                    <Button onClick={props.onClick}>cart
                     <Container varient="light">0</Container>
                     </Button>
                     </Container>

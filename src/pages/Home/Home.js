@@ -1,12 +1,13 @@
 import React from 'react'
-import Headers from '../../components/layouts/Headers'
-import Footer from '../../components/layouts/Footer'
+import Table from 'react-bootstrap/Table' 
 
 const Home = () => {
   return (
-    <>
-        <Headers/>
-        <Footer/>
+    <>  
+        {/* <h1>Tours</h1>
+       <Table>
+
+        </Table>  */}
     </>
   )
 }

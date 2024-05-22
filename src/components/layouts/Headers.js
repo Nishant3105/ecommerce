@@ -1,4 +1,5 @@
 import React,{useContext} from 'react'
+import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,16 +8,17 @@ import CartContext from '../../context/CartContext';
 
 const Headers = (props) => {
     const cartCtx=useContext(CartContext)
+
     const totalCartItem=cartCtx.products.length
     return (
-        <>
+        <>  
             <Navbar bg="dark" fixed="top" data-bs-theme="dark">
                 <Container>
                     <Navbar.Brand href="#home">E-Commerce</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link >Store</Nav.Link>
-                        <Nav.Link >About</Nav.Link>
+                        <Nav.Link as={Link} to="/home">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/products">Products</Nav.Link>
+                        <Nav.Link as={Link} to="/about">About</Nav.Link>
                     </Nav>
                     <Container>
                     <Button onClick={props.onClick}>cart

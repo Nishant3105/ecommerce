@@ -1,18 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Container from 'react-bootstrap/Container'
-// import Card from 'react-bootstrap/Card'
+import classes from './Modal.module.css'
 
 const Backdrop = (props) => {
    return (
-        <Container style={{width:'100%',height:'100vh'}} onClick={props.onClick}></Container>
+        <Container className={classes.backdrop} onClick={props.onClick}></Container>
     )
 }
 const ModalOverlay = (props) => {
    return (
-        <Container>
+        <div className={classes.modal}>
             <Container>{props.children}</Container>
-        </Container>
+        </div>
    )
 }
 

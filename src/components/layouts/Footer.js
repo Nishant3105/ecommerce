@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer style={{backgroundColor: "blueviolet"}}>Footer</footer>
+    <footer style={{backgroundColor: "blueviolet",bottom: '0'}}>Footer</footer>
   )
 }
 

@@ -1,12 +1,29 @@
 import React from 'react'
-import Headers from '../../components/layouts/Headers'
-import Footer from '../../components/layouts/Footer'
+import Container from 'react-bootstrap/Container' 
 
 const About = () => {
   return (
     <>
-        <Headers/>
-        <Footer/>
+        <Container style={{  minHeight: 'calc(80vh - 40px)'}}>
+           Ipsum amet amet accusam sadipscing erat 
+           sed diam takimata sed, et et ea eirmod est 
+           sit dolor, ipsum ipsum accusam.
+           Ipsum amet amet accusam sadipscing erat 
+           sed diam takimata sed, et et ea eirmod est 
+           sit dolor, ipsum ipsum accusam.
+           Ipsum amet amet accusam sadipscing erat 
+           sed diam takimata sed, et et ea eirmod est 
+           sit dolor, ipsum ipsum accusam.
+           Ipsum amet amet accusam sadipscing erat 
+           sed diam takimata sed, et et ea eirmod est 
+           sit dolor, ipsum ipsum accusam.
+           Ipsum amet amet accusam sadipscing erat 
+           sed diam takimata sed, et et ea eirmod est 
+           sit dolor, ipsum ipsum accusam.
+           Ipsum amet amet accusam sadipscing erat 
+           sed diam takimata sed, et et ea eirmod est 
+           sit dolor, ipsum ipsum accusam.
+        </Container>
     </>
   )
 }

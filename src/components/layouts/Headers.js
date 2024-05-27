@@ -17,8 +17,9 @@ const Headers = (props) => {
                     <Navbar.Brand href="#home">E-Commerce</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/products">Products</Nav.Link>
+                        <Nav.Link as={Link} to="/products">Product</Nav.Link>
                         <Nav.Link as={Link} to="/about">About</Nav.Link>
+                        <Nav.Link as={Link} to="/contactus">ContactUs</Nav.Link>
                     </Nav>
                     <Container>
                     <Button onClick={props.onClick}>cart

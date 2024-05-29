@@ -49,17 +49,17 @@ const ContactUs = () => {
                 We'll never share your information with anyone else.
             </Form.Text>
             
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
                 <Form.Label htmlFor="name">Name:</Form.Label>
                 <Form.Control id="name" type="text" ref={nameRef} required/>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
                 <Form.Label htmlFor='email'>Email:</Form.Label>
                 <Form.Control id="email" type="email" ref={emailRef} required/>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
                 <Form.Label htmlFor="phonenumber">Phone Number:</Form.Label>
                 <Form.Control id="phonenumber" type="number" ref={phonenumberRef} required/>
             </Form.Group>

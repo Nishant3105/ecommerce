@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import CartContext from '../../context/CartContext'
-// import {v4 as uuidv4} from 'uuid'
+import { useHistory } from 'react-router-dom'
 
 
 const productsArr = [
@@ -33,11 +33,16 @@ const productsArr = [
 
 const ProductList = () => {
     const cartCtx=useContext(CartContext)
+    const history=useHistory()
+    
+    const showProductDetails = (id)=>{
+        history.push(`/productlist/${id}`)
+    }
     const products = productsArr.map((product, index) => {
         return (
-            <Col xs={4}>
-                <Card className="shadow-ig">
-                    <Card style={{ width: '18rem' }}>
+            <Col sm={4} key={index}>
+                <Card className="shadow-ig" onClick={()=>showProductDetails(index)}>
+                    <Card style={{ width: 'fit-content' }}>
                         <Card.Title>{product.title}</Card.Title>
                         <Card.Body>
                             <Card.Img variant="top" src={product.imageUrl} />
@@ -56,9 +61,7 @@ const ProductList = () => {
         <>
             <Container className='mt-3'>
                 <Row>
-                    <Col xs={4}>
                         {products}
-                    </Col>
                 </Row>
             </Container>
 

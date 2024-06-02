@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { Route, Switch, Redirect} from 'react-router-dom'
 import Headers from './components/layouts/Headers';
 import Footer from "./components/layouts/Footer"
@@ -10,10 +10,14 @@ import Home from './pages/Home/Home';
 import Cart from './context/CartContext';
 import CartContextProvider from './context/CartContextProvider';
 import ContactUs from './pages/ContactUs/ContactUs';
+import AuthContext from './store/AuthContext';
+import Auth from './pages/Auth/Auth';
 
 function App() {
 
   const [cartIsShown, setCartIsShown] = useState(false)
+
+  const authCtx=useContext(AuthContext)
 
   const onClick = () => {
     setCartIsShown(true)
@@ -33,16 +37,24 @@ function App() {
           <About />
         </Route>
         <Route path="/productlist" exact>
-          <ProductList />
+          {authCtx.isLoggedIn && <ProductList />}
+          {!authCtx.isLoggedIn && <Redirect to="/auth" />}
         </Route>
         <Route path="/productlist/:product_id">
-          <ProductDetails />
+          {authCtx.isLoggedIn && <ProductDetails />}
+          {!authCtx.isLoggedIn && <Redirect to="/auth" />}
+        </Route>
+        <Route path="/auth">
+          <Auth />
         </Route>
         <Route path="/home">
           <Home />
         </Route>
         <Route path="/contactus">
           <ContactUs/>
+        </Route>
+        <Route path="*">
+          <Redirect to="/home" />
         </Route>
       </Switch>
       <Footer />

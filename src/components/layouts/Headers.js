@@ -1,15 +1,30 @@
 import React,{useContext} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import CartContext from '../../context/CartContext';
+import AuthContext from '../../store/AuthContext';
 
 const Headers = (props) => {
     const cartCtx=useContext(CartContext)
 
+    const authCtx=useContext(AuthContext)
+
     const totalCartItem=cartCtx.products.length
+
+    const history=useHistory()
+
+    const logInHandler=(e)=>{
+        e.preventDefault()
+        history.replace('/auth')
+    }
+    const logOutHandler=(e)=>{
+        e.preventDefault()
+        authCtx.logout()
+    }
+
     return (
         <>  
             <Navbar bg="dark" fixed="top" data-bs-theme="dark">
@@ -25,6 +40,12 @@ const Headers = (props) => {
                     <Button onClick={props.onClick}>cart
                     <Container varient="light">{totalCartItem}</Container>
                     </Button>
+                    </Container>
+                    <Container>
+                    {!authCtx.isLoggedIn && <Button onClick={logInHandler}>login
+                    </Button>}
+                    {authCtx.isLoggedIn && <Button onClick={logOutHandler}>logout
+                    </Button>}
                     </Container>
                 </Container>
             </Navbar>

@@ -16,9 +16,8 @@ const CartContextProvider = (props) => {
         }
       })
       if (response.ok) {
-        const data = response.json()
-        initialValue = data[0]
-        delete initialValue._id
+        const data = await response.json()
+        initialValue = data
       }
       else if(!response.ok){
         throw new Error('Something went wrong')
@@ -35,17 +34,13 @@ const CartContextProvider = (props) => {
   const addToCartHandler = async (product) => {
     try {
       const existingProduct = products.find((cartItem) => cartItem.title === product.title)
-      // console.log(existingProduct)
-      // const email = localStorage.getItem('email')
-      // const reqEmail = email.split('@').join("").split('.').join("")
+      const crudIdOfProduct=existingProduct['_id']
       const url=`https://crudcrud.com/api/072132452d284dd7a4b7b236cc729570/cart${reqEmail}`
       if (existingProduct) {
-        const crudId=localStorage.getItem('_id')
         const updatedProducts = products.map((cartItem) =>
           cartItem.id === product.id ? { ...cartItem, quantity: Number(cartItem.quantity) + 1 } : cartItem
       );
-      // setProducts(updatedProducts);
-        const response = await fetch(`${url}/${crudId}`, {
+        const response = await fetch(`${url}/${crudIdOfProduct}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -72,7 +67,6 @@ const CartContextProvider = (props) => {
         })
         if (response.ok) {
           const data = await response.json()
-          localStorage.setItem('_id', data._id)
           setProducts([...products, { ...product, quantity: 1 }])
         }
         else if (!response.ok) {

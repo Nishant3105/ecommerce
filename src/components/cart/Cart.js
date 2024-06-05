@@ -28,10 +28,9 @@ import CartContext from '../../context/CartContext';
 
 
 const Cart = (props) => {
-
     const cartCtx = useContext(CartContext)
-
-    const CartItems = (cartCtx.products.map((item, index) => (
+    const {products,removeFromCart}=cartCtx
+    const CartItems = (products.map((item, index) => (
         <li id={index} key={index}>
             <span>
                 Item: {item.title}
@@ -46,11 +45,10 @@ const Cart = (props) => {
                 Total: {Number(item.price * item.quantity)}
             </span>
             <Button>Purchase</Button>
-            <Button onClick={() => cartCtx.removeFromCart(item.id)}>Remove</Button>
+            <Button onClick={() => removeFromCart(item.id)}>Remove</Button>
         </li>)
 
     ))
-
     return (
         <Modal onClick={props.onClick}>
             <ul id="cart-items">

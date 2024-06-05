@@ -3,7 +3,6 @@ import { useState, useRef, useContext } from 'react';
 // import classes from './AuthForm.module.css';
 import AuthContext from '../../store/AuthContext';
 import { useHistory } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 
@@ -46,7 +45,7 @@ const Auth = () => {
                 const data = await response.json()
                 console.log(data)
                 history.push('/productlist')
-                AuthCtx.login(data.idToken, data.expiresIn)
+                AuthCtx.login(data.idToken, data.expiresIn, enteredEmail)
             }
 
         } catch (error) {

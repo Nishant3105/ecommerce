@@ -48,7 +48,7 @@ const ProductList = () => {
                             <Card.Img variant="top" src={product.imageUrl} />
                             <Card.Text>
                                 ${product.price}
-                            <Button variant="primary" onClick={()=>cartCtx.addToCart({...product,id:index})}>Add To Cart</Button>
+                            <Button variant="primary" onClick={(e)=>{e.stopPropagation();cartCtx.addToCart({...product,id:index}) }}>Add To Cart</Button>
                             </Card.Text>
                         </Card.Body>
                     </Card>

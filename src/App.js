@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react'
+import React, { useContext } from 'react'
 import { Route, Switch, Redirect} from 'react-router-dom'
 import Headers from './components/layouts/Headers';
 import Footer from "./components/layouts/Footer"
@@ -7,28 +7,18 @@ import About from './pages/About/About';
 import ProductList from './pages/Product/ProductList';
 import ProductDetails from './pages/Product/ProductDetails';
 import Home from './pages/Home/Home';
-import Cart from './context/CartContext';
-import CartContextProvider from './context/CartContextProvider';
+// import CartContextProvider from './context/CartContextProvider';
 import ContactUs from './pages/ContactUs/ContactUs';
 import AuthContext from './store/AuthContext';
 import Auth from './pages/Auth/Auth';
 
 function App() {
 
-  const [cartIsShown, setCartIsShown] = useState(false)
-
   const authCtx=useContext(AuthContext)
 
-  const onClick = () => {
-    setCartIsShown(true)
-  }
-  const onClose = () => {
-    setCartIsShown(false)
-  }
   return (
-    <CartContextProvider>
-      {cartIsShown && <Cart onClick={onClose} />}
-      <Headers onClick={onClick} />
+    <>
+      <Headers/>
       <Switch>
         <Route exact path="/">
           <Redirect to="/home"/>
@@ -58,7 +48,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
-    </CartContextProvider>
+    </>
   );
 
 }

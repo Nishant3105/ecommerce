@@ -15,8 +15,9 @@ export const AuthContextProvider = (props) => {
     const isLoggedIn = !!token
 
     // let timer
-    const loginHandler = (tokenVal,tokenExpiryTime) => {
+    const loginHandler = (tokenVal,tokenExpiryTime,email) => {
         localStorage.setItem('token', tokenVal)
+        localStorage.setItem('email', email)
         setToken(tokenVal)
         // timer=setTimeout(()=>{
         //     loginHandler()
@@ -24,6 +25,7 @@ export const AuthContextProvider = (props) => {
     }
     const logoutHandler = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('email')
         setToken(null)
         // clearTimeout(timer)
     }
